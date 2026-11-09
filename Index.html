@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Course Management</title>
+</head>
+<body>
+
+<h1>COLLEGE COURSE MANAGEMENT SYSTEM</h1>
+
+<p>{{MESSAGE}}</p>
+
+<hr>
+
+<h2>1. Add Student</h2>
+
+<form method="post">
+    <input type="hidden" name="action" value="addStudent">
+
+    Student Name:
+    <input type="text" name="name" required>
+
+    <input type="submit" value="Add Student">
+</form>
+
+<h3>Student Details</h3>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Enrolled Courses</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {{STUDENTS}}
+
+</table>
+
+<hr>
+
+<h2>2. Add Course</h2>
+
+<form method="post">
+    <input type="hidden" name="action" value="addCourse">
+
+    Course Name:
+    <input type="text" name="name" required>
+
+    <input type="submit" value="Add Course">
+</form>
+
+<h3>Course Details</h3>
+
+<form method="post">
+    <input type="hidden" name="action" value="search">
+
+    Search Course:
+    <input type="text" name="search" value="{{SEARCH}}">
+
+    <input type="submit" value="Search">
+</form>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Course ID</th>
+        <th>Course Name</th>
+        <th>Enrolled Students</th>
+        <th>Edit Course</th>
+        <th>Delete Course</th>
+    </tr>
+
+    {{COURSES}}
+
+</table>
+
+<hr>
+
+<h2>3. Student Enrollment</h2>
+
+<form method="post">
+    <input type="hidden" name="action" value="enroll">
+
+    Select Student:
+
+    <select name="sid" required>
+        <option value="">Select Student</option>
+        {{STUDENT_OPTIONS}}
+    </select>
+
+    <br><br>
+
+    Select Course:
+
+    <select name="cid" required>
+        <option value="">Select Course</option>
+        {{COURSE_OPTIONS}}
+    </select>
+
+    <br><br>
+
+    <input type="submit" value="Enroll Student">
+</form>
+
+<p>Maximum 5 courses per student.</p>
+
+<hr>
+
+<h2>4. Current Enrollments</h2>
+
+<table border="1" cellpadding="8">
+
+    <tr>
+        <th>Student Name</th>
+        <th>Course Name</th>
+    </tr>
+
+    {{ENROLLMENTS}}
+
+</table>
+
+</body>
+</html>
